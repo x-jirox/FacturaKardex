@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background: #007bff;
+    color: #fff;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd; /* Borde fino para los campos */
+    border-radius: 4px;
+    font-size: 12px;
+    box-shadow: none; /* Elimina la sombra */
+    background: #f9f9f9; /* Fondo similar al de la tarjeta */
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid transparent; /* Bordes transparentes */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+    background-color: #007bff; /* Color de fondo del botón por defecto */
+    color: #fff;
+    width: 100%; /* Ajusta al 100% del ancho del contenedor */
+}
+
+
+.table-wrapper {
+    padding: 15px;
+    background-color: #fff;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.toggle-filter-btn {
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+}
+/* Ajustes para el contenedor del filtro */
+ .filter-form {
+     border: none; /* Elimina el borde del formulario */
+     box-shadow: none; /* Elimina cualquier sombra que pueda parecer un borde */
+     padding: 0; /* Elimina el padding si es necesario */
+     background-color: transparent; /* Fondo transparente para integrarse con la tarjeta */
+     display: grid; /* Usa grid para una disposición en columnas */
+     grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+     gap: 10px; /* Espacio entre los campos */
+     margin-bottom: 10px; /* Espacio inferior para los botones */
+ }
+
+ /* Ajustes para los grupos de formularios */
+ .filter-form .form-group {
+     display: flex; /* Usa flexbox para alinear los elementos en una fila */
+     align-items: center; /* Alinea verticalmente los elementos del formulario */
+ }
+
+ /* Ajustes para los campos del formulario */
+ .filter-form .form-group label {
+     margin-right: 10px; /* Espacio entre la etiqueta y el campo de entrada */
+     width: 120px; /* Ancho fijo para las etiquetas */
+     text-align: right; /* Alinea el texto de la etiqueta a la derecha */
+ }
+
+ .filter-form .form-group select,
+ .filter-form .form-group input {
+     border: 1px solid #ccc; /* Borde ligero para los campos de entrada */
+     border-radius: 4px; /* Bordes redondeados */
+     padding: 5px; /* Espacio interno de los campos */
+     box-shadow: none; /* Elimina la sombra de los campos */
+     width: 100%; /* Ancho completo dentro del contenedor de grupo */
+ }
+
+ /* Ajustes para los botones */
+ .btn-container {
+     grid-column: span 2; /* Los botones ocupan las dos columnas */
+     display: flex;
+     justify-content: flex-start; /* Alinea los botones al principio del contenedor */
+     gap: 10px; /* Espacio entre los botones */
+ }

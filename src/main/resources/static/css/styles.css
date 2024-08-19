@@ -1,0 +1,111 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.box {
+    text-align: center;
+    padding: 40px; /* Aumentar el padding para hacer el rectángulo más grande */
+    background-color: white; /* Fondo blanco */
+    border-radius: 20px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%; /* Ancho ajustado */
+    max-width: 600px; /* Ancho máximo */
+}
+
+.box-title {
+    margin-bottom: 20px; /* Separación entre título y separador */
+}
+
+.title {
+    font-size: 48px; /* Tamaño de fuente más grande para el título */
+    margin: 0;
+    color: #333; /* Color del texto del título */
+}
+
+.separator {
+    width: 50%; /* Ancho del separador */
+    margin-top: 10px; /* Margen superior */
+    margin-bottom: 30px; /* Margen inferior */
+    border: none; /* Sin borde */
+    border-top: 1px solid #ccc; /* Línea horizontal */
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Espacio entre el separador y los botones */
+}
+
+.buttons button {
+    width: 250px; /* Ancho mayor para los botones */
+    height: 70px; /* Altura mayor para los botones */
+    margin: 10px;
+    font-size: 24px; /* Tamaño de fuente mayor */
+    cursor: pointer;
+    border: none; /* Sin borde */
+    background-color: #8a2be2; /* Color morado */
+    color: white; /* Texto blanco */
+    border-radius: 35px; /* Esquinas redondeadas */
+    outline: none; /* Sin contorno al hacer clic */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+ .btn-neu {
+            border: none;
+            background-color: transparent;
+            color: #333; /* Color neutro para el texto del botón */
+            font-size: 1rem;
+            cursor: pointer;
+
+        }
+        .btn-neu:hover {
+            background-color: #f8f9fa; /* Color de fondo en hover */
+            color: #000; /* Color de texto en hover */
+        }
+ body {
+             padding-top: 20px;
+         }
+         .form-control-sm {
+             width: auto;
+             display: inline-block;
+         }
+         .btn-xs {
+             padding: 0.25rem 0.5rem;
+             font-size: 0.75rem;
+             line-height: 1;
+             border-radius: 0.2rem;
+         }
+         table th, table td {
+             text-align: center;
+         }

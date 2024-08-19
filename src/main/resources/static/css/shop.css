@@ -1,0 +1,251 @@
+.container {
+    max-width: 100%;
+       position: relative;
+       background-color: transparent !important; /* Asegurar fondo transparente */
+       margin: 0 auto;
+       padding: 0 15px; /* Espacio interno para no tocar los bordes del contenedor */
+       align-items: center;
+}
+/* Fondo borroso */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-image: url('../images/fondo.png');*/
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1;
+    /* Esto asegura que la imagen de fondo esté detrás del contenido */
+}
+
+/* Contenedor que cubre la imagen borrosa */
+.overlay {
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté por encima del fondo borroso */
+}
+/* Estilo de la tarjeta de imagen */
+.image-card {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.image-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card-img {
+    width: 100%;
+    height: 500px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ajustar el diseño de la cuadrícula */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.col-md-4 {
+    flex: 0 0 33.33%; /* Ahora tres tarjetas por fila */
+    max-width: 33.33%;
+    box-sizing: border-box;
+    margin-top:1rem;
+}
+/* Columnas del diseño de cuadrícula */
+.col-md-3 {
+    flex: 0 0 50%; /* 4 productos por fila (25% de ancho) */
+    max-width: 25%;
+    position: relative; /* Asegura que las tarjetas se posicionen correctamente */
+    margin-bottom: 1.5rem;
+     box-sizing: border-box;
+}
+
+/* Tarjetas */
+.card {
+    background-color: transparent !important;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff; /* Asegura que el fondo de la tarjeta sea blanco */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.card-img-top {
+    height: 200px; /* Ajusta la altura para uniformidad */
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem; /* Ajustar el padding */
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.25rem; /* Tamaño de fuente más pequeño */
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+}
+
+.card-text.price {
+    font-weight: bold;
+    color: #e83e8c;
+}
+
+.btn-view {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1rem; /* Ajustar el padding */
+    font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+}
+
+.btn-view:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el área de búsqueda */
+.search-container {
+    background-color: none; /* Fondo blanco semi-transparente */
+    padding: 0; /* Espaciado alrededor */
+    margin: 7rem auto; /* Espacio arriba y abajo, centrado horizontalmente */
+    position: relative; /* Asegura que el área de búsqueda esté por encima del fondo borroso */
+    width: 90%; /* Ancho del contenedor de búsqueda */
+    max-width: 600px; /* Ancho máximo del contenedor de búsqueda */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1; /* Hacer que el contenedor de búsqueda sea visible */
+    border: none;
+    outline: none;
+}
+
+/* Estilo para los campos de búsqueda */
+.search-input {
+    width: calc(100% - 0.5rem); /* Ocupa casi todo el ancho del contenedor menos el margen */
+    padding: 1rem; /* Espaciado interno */
+    border-radius: 25px; /* Bordes redondeados */
+    border: 2px solid #007bff; /* Borde azul */
+    font-size: 1.25rem; /* Tamaño de fuente */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra */
+    margin-bottom: 1rem; /* Espacio debajo del campo de búsqueda */
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
+    width: 30%; /* Ocupa todo el ancho del contenedor */
+    padding: 1rem;
+    border-radius: 25px; /* Bordes redondeados */
+    border: none;
+    background-color: #e83e8c; /* Color del botón */
+    color: white;
+    font-size: 1rem; /* Tamaño de fuente */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.search-button:hover {
+    background-color: #d63384; /* Color del botón al pasar el ratón */
+}
+
+/* Contenedor del Banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Ajusta la altura según tus necesidades */
+    background-image: url('../images/fondo.png'); /* Ruta de la imagen del banner */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 2rem; /* Espacio debajo del banner */
+}
+
+/* Contenido del Banner */
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+/* Título del Banner */
+.banner-title {
+    font-size: 5rem; /* Tamaño del texto */
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Subtítulo del Banner */
+.banner-subtitle {
+    font-size: 2.25rem; /* Tamaño del texto */
+    margin: 0;
+}
+
+
+.card {
+    background-color: transparent !important;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-img {
+    height: 200px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+
+.card-body {
+    text-align: center;
+    padding: 1rem; /* Ajustar el padding */
+}
+
+.btn-view {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-view:hover {
+    background-color: #0056b3;
+}
+
+

@@ -1,0 +1,166 @@
+.card-body-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Alinea los elementos en columna */
+    gap: 10px; /* Espacio entre los botones, ajusta según lo necesites */
+}
+
+.custom-btn-view {
+    background-color: transparent; /* Quitar color de fondo */
+    color: #007bff; /* Color del texto del enlace */
+    border: none; /* Quitar borde */
+    border-radius: 0; /* Quitar bordes redondeados */
+    padding: 0; /* Quitar padding */
+    font-size: 0.875rem;
+    text-decoration: none; /* Quitar subrayado predeterminado */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Efectos de transición */
+    display: inline-flex; /* Usar inline-flex para ajustar el ancho al contenido */
+    align-items: center; /* Centrar verticalmente el contenido */
+    margin-top: 1rem;
+    margin-right: 5px;
+}
+
+.custom-btn-view:hover {
+    color: #0056b3; /* Cambia el color del texto al pasar el cursor */
+    text-decoration: underline; /* Subrayar el texto al pasar el cursor */
+}
+
+.custom-btn-icon {
+    width: 20px; /* Ajusta el tamaño del ícono */
+    height: 20px; /* Ajusta el tamaño del ícono */
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+}
+.titulo{
+    font-size: 60px;
+    text-align:center;
+    margin-top: 1rem;
+
+}
+/* Contenedor del Banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 150px; /* Ajusta la altura según tus necesidades */
+    background-image: url('../images/fondo.png'); /* Ruta de la imagen del banner */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 2rem; /* Espacio debajo del banner */
+}
+/* Contenido del Banner */
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #e83e8c;;
+    text-align: center;
+}
+.banner-title {
+    font-size: 3.5rem; /* Tamaño del texto */
+    margin: 0;
+}
+
+
+/*Tarjetas*/
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #ddd; /* Borde ligero para las tarjetas de producto */
+    border-radius: 5px; /* Bordes redondeados para las tarjetas */
+    overflow: hidden; /* Oculta el desbordamiento para los bordes redondeados */
+    margin-bottom: 20px; /* Espaciado entre tarjetas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para las tarjetas */
+}
+
+.card-img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+    object-fit: cover; /* Ajusta la imagen para cubrir el área del contenedor */
+}
+
+.card-body-buttons {
+    padding: 15px; /* Espaciado interno para los botones */
+    display: flex;
+    justify-content: space-between; /* Espacia los botones a lo largo del contenedor */
+}
+
+
+.card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+}
+/* Contenedor principal con overlay */
+.overlay {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Contenedor para la búsqueda */
+.search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el formulario de búsqueda */
+    margin-left:200px;
+}
+
+/* Ajusta el formulario de búsqueda */
+.search-input {
+    width: 200%; /* Asegura que el campo de búsqueda ocupe todo el ancho disponible */
+}
+
+.search-button {
+    padding: 12px 24px; /* Aumenta el tamaño del botón */
+    font-size: 16px; /* Ajusta el tamaño de la fuente del botón */
+    border-radius: 5px;
+    background-color:  #e83e8c;;
+    border: none;
+    color: white;
+    margin-left:25rem;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor del filtro en la columna izquierda */
+.filter-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    flex: 0 0 300px; /* Ajusta el ancho del contenedor */
+}
+
+/* Ajusta el formulario del filtro */
+.filter-form .form-group {
+    margin-bottom: 15px;
+}
+
+.filter-form .form-control {
+    border-radius: 5px;
+}
+
+/* Botón de búsqueda */
+.btn-primary {
+    background-color:#e83e8c;;
+    border: none;
+    padding: 12px 24px; /* Aumenta el tamaño del botón */
+    font-size: 16px; /* Ajusta el tamaño de la fuente del botón */
+    border-radius: 5px;
+
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

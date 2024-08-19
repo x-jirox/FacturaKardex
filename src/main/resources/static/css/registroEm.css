@@ -1,0 +1,56 @@
+/* Contenedor del formulario */
+form {
+    max-width: 600px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo para los campos del formulario */
+form div {
+    margin-bottom: 15px; /* Espaciado entre los campos */
+}
+
+form label {
+    display: block; /* Muestra la etiqueta en una nueva línea */
+    margin-bottom: 5px; /* Espaciado debajo de la etiqueta */
+    font-weight: bold; /* Texto en negrita */
+}
+
+form input {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+}
+
+/* Estilo para el botón de envío */
+form button {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave para el color */
+}
+
+form button:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el cursor */
+}
+
+/* Estilo para el mensaje de error */
+div[th\\:if="${error}"] {
+    max-width: 600px; /* Ancho máximo del mensaje */
+    margin: 20px auto; /* Centra el mensaje horizontalmente */
+    padding: 10px; /* Espaciado interno */
+    background-color: #f8d7da; /* Fondo para el mensaje de error */
+    color: #721c24; /* Color del texto */
+    border: 1px solid #f5c6cb; /* Borde para el mensaje de error */
+    border-radius: 4px; /* Bordes redondeados */
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="layout/layout :: head">
+    <link th:href="@{/css/reporte.css}" rel="stylesheet">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">Inventario</div>
+        <div class="card-body">
+            <!-- Botón para mostrar/ocultar filtro -->
+            <button class="toggle-filter-btn" onclick="toggleFilter()">Mostrar Filtros</button>
+
+            <div id="filterContainer" class="filter-container" style="display:none;">
+                <form th:action="@{/product/reporte}" method="get" class="filter-form">
+                    <div class="form-group">
+                        <label for="category">Categoría:</label>
+                        <select id="category" name="categoria" class="form-control form-control-sm">
+                            <option value="">Todas</option>
+                            <option th:each="cat : ${categorias}"
+                                    th:value="${cat}"
+                                    th:text="${cat}"
+                                    th:selected="${cat == selectedCategoria}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <select id="estado" name="estado" class="form-control form-control-sm">
+                            <option value="">Todos</option>
+                            <option value="true" th:selected="${selectedEstado == true}">Disponible</option>
+                            <option value="false" th:selected="${selectedEstado == false}">Reposición</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control form-control-sm"
+                               th:value="${selectedNombre}" placeholder="Nombre del producto">
+                    </div>
+                    <div class="form-group">
+                        <label for="talla">Talla:</label>
+                        <input type="text" id="talla" name="talla" class="form-control form-control-sm"
+                               th:value="${selectedTalla}" placeholder="Talla del producto">
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" class="form-control form-control-sm"
+                               th:value="${selectedCantidad}" placeholder="Cantidad mínima">
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="btn btn-primary btn-sm">Generar</button>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/product/reporte/excel(categoria=${selectedCategoria}, estado=${selectedEstado}, nombre=${selectedNombre}, talla=${selectedTalla}, cantidad=${selectedCantidad})}" class="btn btn-success btn-sm">Exportar a Excel</a>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/product/reporte/pdf(categoria=${selectedCategoria}, estado=${selectedEstado}, nombre=${selectedNombre}, talla=${selectedTalla}, cantidad=${selectedCantidad})}" class="btn btn-info btn-sm">Exportar a PDF</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contenedor de tabla -->
+            <div class="table-wrapper">
+                <div class="form-inline mb-3">
+                    <input type="text" id="searchName" name="nombre" class="form-control form-control-sm flex-grow-1 mr-2" placeholder="Buscar por nombre" />
+                    <button class="btn btn-primary btn-sm" onclick="searchProducts()">Buscar</button>
+                </div>
+
+                <!-- Mensaje si no hay productos -->
+                <div th:if="${noProductos != null}" class="alert alert-warning">
+                    <p th:text="${noProductos}"></p>
+                </div>
+
+                <!-- Tabla de productos -->
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Talla</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Estado</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
+                        <th>Visualizar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.id}"></td>
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.categoria}"></td>
+                        <td th:text="${producto.descripcion}"></td>
+                        <td th:text="${producto.talla}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.cantidad}"></td>
+                        <td th:text="${producto.estado ? 'Disponible' : 'Reposición'}"></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a th:href="@{/product/formProduct/} + ${producto.id}" class="btn btn-primary btn-sm">Actualizar</a>
+                            </div>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger btn-xs" th:href="@{/product/eliminarProducto/} + ${producto.id}" th:text="'Eliminar'"
+                               onclick="return confirm('Esta seguro que desea eliminar?')"></a></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a th:href="@{/product/verProduct/{id}(id=${producto.id})}" class="btn btn-info btn-sm">Ver</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleFilter() {
+        var filterContainer = document.getElementById('filterContainer');
+        if (filterContainer.style.display === 'none' || filterContainer.style.display === '') {
+            filterContainer.style.display = 'block';
+            document.querySelector('.toggle-filter-btn').textContent = 'Ocultar Filtros';
+        } else {
+            filterContainer.style.display = 'none';
+            document.querySelector('.toggle-filter-btn').textContent = 'Mostrar Filtros';
+        }
+    }
+
+    function searchProducts() {
+        var name = document.getElementById('searchName').value;
+        window.location.href = '/product/reporte?nombre=' + encodeURIComponent(name);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BOUTIQUE OZONO</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+    <link th:href="@{/css/shop.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<header th:replace="~{layout/layout :: header}"></header>
+
+<!-- Banner Section -->
+<div class="banner">
+    <div class="banner-content">
+        <h1 class="banner-title">Bienvenido a Nuestra Boutique</h1>
+    </div>
+</div>
+
+<div th:if="${userPrincipal != null}">
+    <h1 class="titulo"> Bienvenido/a, <span th:text="${userPrincipal.username}">User</span>!</h1>
+</div>
+
+<div class="background"></div>
+
+<!-- Contenedor principal con overlay -->
+<div class="overlay">
+    <!-- Filtros en una columna a la izquierda -->
+    <div id="filterContainer" class="filter-container">
+        <form th:action="@{/product/reporteCliente}" method="get" class="filter-form">
+            <div class="form-group">
+                <label for="category">Categoría:</label>
+                <select id="category" name="categoria" class="form-control form-control-sm">
+                    <option value="">Todas</option>
+                    <option th:each="cat : ${categorias}"
+                            th:value="${cat}"
+                            th:text="${cat}"
+                            th:selected="${cat == selectedCategoria}">
+                    </option>
+                </select>
+            </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control form-control-sm"
+                               th:value="${selectedNombre}" placeholder="Nombre del producto">
+                    </div>
+                    <div class="form-group">
+                        <label for="talla">Talla:</label>
+                        <input type="text" id="talla" name="talla" class="form-control form-control-sm"
+                               th:value="${selectedTalla}" placeholder="Talla del producto">
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="btn btn-primary btn-sm">Generar Búsqueda</button>
+                    </div>
+        </form>
+    </div>
+
+    <!-- Contenedor para la búsqueda -->
+    <div class="search-container">
+        <form th:action="@{/product/buscar}" method="get">
+            <input type="text" id="nombres" name="nombre" class="search-input" placeholder="¿Que estas buscando hoy?" required />
+            <button type="submit" class="search-button">Buscar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Mostrar productos -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" th:each="producto : ${productos}">
+            <div class="card">
+                <img th:src="@{'/uploads/' + ${producto.foto}}" class="card-img" th:alt="${producto.nombre}">
+                <div class="card-body-buttons">
+                    <a class="custom-btn-view" th:href="@{/product/verProduct/{id}(id=${producto.id})}">
+                        <img th:src="@{/images/ver.png}" alt="Ícono" class="custom-btn-icon"> Ver Detalles
+                    </a>
+                    <a href="#" class="custom-btn-view">
+                        <img th:src="@{/images/shop.png}" alt="Ícono" class="custom-btn-icon"> Agregar al Carro
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mensaje de No Productos -->
+<div class="card-deck">
+    <div th:if="${noProductos != null}" class="alert alert-warning">
+        <p th:text="${noProductos}"></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

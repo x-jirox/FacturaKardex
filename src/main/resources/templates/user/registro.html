@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+    <link th:href="@{/css/registroEm.css}" rel="stylesheet">
+</head>
+<body>
+<header th:replace="~{layout/layout :: header}"></header>
+
+<h1 style="text-align: center; margin-top: 20px;">Registrate</h1>
+
+<form th:action="@{/user/registro}" th:object="${usuario}" method="post">
+    <div>
+        <label for="nombres">Nombres Completos:</label>
+        <input type="text" id="nombres" th:field="*{nombres}" required />
+    </div>
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:field="*{username}" required />
+    </div>
+    <div>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" th:field="*{password}" required />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" th:field="*{email}" required />
+    </div>
+    <div>
+        <label for="telefono">Telefono:</label>
+        <input type="number" id="telefono" th:field="*{telefono}" required />
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
+
+<div th:if="${error}">
+    <p th:text="${error}"></p>
+</div>
+
+<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

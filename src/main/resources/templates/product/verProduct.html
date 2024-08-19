@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <h1 class="mb-4" style="text-align: center;">Detalles</h1>
+
+    <div th:object="${producto}" class="product-details card mb-4">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Información del Producto</h5>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Nombre:</strong> <span th:text="${producto.nombre}"></span></p>
+                    <p><strong>Descripción:</strong> <span th:text="${producto.descripcion}"></span></p>
+                    <p><strong>Talla:</strong> <span th:text="${producto.talla}"></span></p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Precio:</strong> <span th:text="${producto.precio}"></span> USD</p>
+                    <p><strong>Categoria:</strong> <span th:text="${producto.categoria}"></span></p>
+                    <p><strong>Estado:</strong> <span th:text="${producto.estado ? 'Disponible' : 'No Disponible'}"></span></p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <img th:if="${producto.foto != null and #strings.length(producto.foto) > 0}"
+                         class="img-fluid rounded product-image"
+                         th:src="@{'/uploads/' + ${producto.foto}}"
+                         th:alt="${producto.nombre}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="layout/layout :: footer"></footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+
+</body>
+</html>

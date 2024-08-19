@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BOUTIQUE OZONO</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/reporte.css}" rel="stylesheet">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="table-wrapper">
+    <div class="form-inline mb-3">
+        <input type="text" id="searchName" name="nombres" class="form-control form-control-sm flex-grow-1 mr-2" placeholder="Buscar Personal" th:value="${nombres}" />
+        <button class="btn btn-primary btn-sm" onclick="searchProducts()">Buscar</button>
+    </div>
+
+    <!-- Mensaje si no hay productos -->
+    <div th:if="${noProductos != null}" class="alert alert-warning">
+        <p th:text="${noProductos}"></p>
+    </div>
+
+    <!-- Tabla de productos -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre y Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.nombres}"></td>
+            <td th:text="${usuario.telefono}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.username}"></td>
+            <td th:text="${usuario.rol}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function searchProducts() {
+        var name = document.getElementById('searchName').value;
+        window.location.href = '/user/listarUsuario?nombres=' + encodeURIComponent(name);
+    }
+</script>
+
+</body>
+</html>
